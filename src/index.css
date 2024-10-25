@@ -1,0 +1,133 @@
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+body {
+  min-width: 375px;
+  /* max-width: 768px; */
+  font-family: "Commissioner", sans-serif;
+  background-color: hsl(0, 0%, 97%);
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ------------------- MOBILE LAYOUT ------------------- */
+
+
+/* ------------------- HEADER ------------------- */
+
+.bg-hero-mobile {
+  background-image: url('./assets/images/image-hero-mobile.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100vw;
+  min-width: 375px;
+  height: 300px;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 25px 0;
+}
+
+.crowdfund-title {
+  color: white;
+  font-size: 23px;
+}
+
+.nav-text {
+  padding: 22px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #000;
+}
+
+/* ------------------- end HEADER ------------------- */
+
+
+/* ------------------- MAIN BODY ------------------- */
+
+.card {
+  background-color: white;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid rgba(214, 209, 209, 0.504);
+  border-radius: 10px;
+  width: 330px;
+  padding: 35px 15px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+   margin: 20px 20px; 
+   font-size: 1.3rem
+}
+
+.card-text {
+  margin: 20px 10px; 
+  font-size: .9rem;
+  color: hsla(0, 0%, 48%, 0.845)
+}
+
+/* ------------------- TOP CARD BUTTONS ------------------- */
+
+.top-buttons {
+  display: flex;
+  justify-content: center;
+
+}
+
+.top-buttons button {
+  border: 0;
+  margin: 0 5px;
+  height: 55px;
+}
+
+.bookmark-btn {
+  border-radius: 50%;
+}
+
+/* ------------------- end TOP CARD BUTTONS ------------------- */
+
+/* ------------------- MIDDLE STATS CARD ------------------- */
+
+#stats-card .card-title {
+  font-size: 2rem;
+}
+
+.line-break {
+  border: 1px solid rgba(117, 117, 117, 0.603);
+  border-radius: 1px;
+  width: 90px;
+  margin: 0 auto;
+}
+
+/* ------------------- end MIDDLE STATS CARD ------------------- */
+
+
+.main-btn {
+  border-radius: 50px;
+  padding: 0 43px;
+  background-color: hsl(176, 50%, 47%);
+  color: hsl(0, 0%, 97%);
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+
+
+/* ------------------- end MAIN BODY ------------------- */
