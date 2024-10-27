@@ -2,6 +2,26 @@ import Header from './Components/Header';
 import MainTopCard from './Components/Body/MainTopCard';
 import StatsMiddleCard from './Components/Body/StatsMiddleCard';
 import AboutBottomCard from './Components/Body/AboutBottomCard';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      // Moderate cyan
+      main: 'hsl(176, 50%, 47%)', 
+      // Background
+      light: 'hsl(0, 0%, 97%)',
+      // Dark cyan
+      dark: 'hsl(176, 72%, 28%)'
+    },
+    secondary: {
+      // Black
+      main: 'hsl(0, 0%, 0%)',
+      // Dark gray
+      dark: 'hsl(0, 0%, 48%)'
+    }
+  }
+})
 
 function App() {
   const cardOverlap = {
@@ -10,14 +30,14 @@ function App() {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Header />
       <div style={cardOverlap}>
         <MainTopCard />
         <StatsMiddleCard />
         <AboutBottomCard />
       </div>
-    </>
+    </ThemeProvider>
   )
 }
 

@@ -1,11 +1,35 @@
 import Card from "../Card"
-import { LinearProgress } from '@mui/material';
+import { Box } from '@mui/material';
+// import { LinearProgress } from '@mui/material';
+import { styled } from '@mui/material/styles';
+// import { useTheme } from '@mui/material/styles';
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+
+// MUI PROGRESS BAR CUSTOM-STYLED
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+    width: '280px',
+    margin: '0 auto',
+    height: 10,
+    borderRadius: 5,
+    [`&.${linearProgressClasses.colorPrimary}`]: {
+        backgroundColor: theme.palette.grey[200],
+        ...theme.applyStyles('dark', {
+            backgroundColor: theme.palette.grey[800],
+        }),
+    },
+    [`& .${linearProgressClasses.bar}`]: {
+        borderRadius: 5,
+        backgroundColor: theme.palette.primary.main,
+        ...theme.applyStyles('dark', {
+            backgroundColor: '#308fe8',
+        }),
+    },
+}));
 
 export default function StatsMiddleCard() {
-
-
+    // const theme = useTheme();
     return (
-        <Card >
+        <Card>
             <div id="stats-card">
 
                 <h1 className="card-title">$89,914</h1>
@@ -18,13 +42,13 @@ export default function StatsMiddleCard() {
 
                 <h1 className="card-title">56</h1>
                 <p className="card-text">days left</p>
-                <hr className="line-break" />
+
+                <Box className="progress-box">
+                    <BorderLinearProgress variant="determinate" value={75} />
+                </Box>
+
             </div>
 
-            {/* Progress Bar for the amount of money backed */}
-            
-            {/* <progress value={0.8} /> */}
-            <LinearProgress className="progress-bar" variant="determinate"  />
         </Card>
     )
 }

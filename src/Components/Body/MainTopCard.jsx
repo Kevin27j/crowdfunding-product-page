@@ -9,7 +9,7 @@ export default function MainTopCard() {
   };
 
   return (
-    <Card className="top-card">
+    <Card>
       <img src={mastercraftLogo} style={imgStyle} />
       <div style={{ marginTop: '-60px' }}>
         <h1 className="card-title">
