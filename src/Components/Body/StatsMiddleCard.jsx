@@ -31,7 +31,7 @@ export default function StatsMiddleCard() {
     return (
         <Card>
             <div id="stats-card">
-
+        
                 <h1 className="card-title">$89,914</h1>
                 <p className="card-text">of $100,000 backed</p>
                 <hr className="line-break" />

@@ -5,7 +5,7 @@ import bookmarkIcon from "../../assets/images/icon-bookmark.svg"
 export default function MainTopCard() {
   const imgStyle = {
     position: "relative",
-    top: -60,
+    top: -45,
   };
 
   return (
