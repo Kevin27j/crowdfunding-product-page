@@ -136,6 +136,11 @@ button {
 /* ------------------- end MIDDLE STATS CARD ------------------- */
 
 /* ------------------- BOTTOM ABOUT CARD ------------------- */
+
+#about-card {
+  text-align: left;
+}
+
 #about-card .card-title {
   margin: 10px 10px;
 }
@@ -163,6 +168,17 @@ button {
 }
 
 #about-card .main-btn {
+  height: 50px;
+  max-width: 170px;
+}
+
+.disabled-btn {
+  /* @extend .main-btn; */
+  border-radius: 50px;
+  background-color: hsla(0, 0%, 48%, 0.845);
+  color: hsl(0, 0%, 97%);
+  font-size: .9rem;
+  font-weight: bold;
   height: 50px;
   max-width: 170px;
 }
