@@ -42,8 +42,8 @@ export default function AboutBottomCard() {
                 <br />
 
                 {rewardCardsData.map((card, i) => {
-                    function checkRewardUnits(noUnit, normal){
-                        return card.units === 0 ? noUnit : normal
+                    function checkRewardUnits(nil, normal){
+                        return card.units === 0 ? nil : normal
                     }
                     
                     return (
@@ -55,7 +55,7 @@ export default function AboutBottomCard() {
 
                             <div className="reward-interaction-box">
                                 <p className="card-text"><span className="reward-unit">{card.units}</span> left</p>
-                                <button className={checkRewardUnits("disabled-btn", "main-btn")}>{checkRewardUnits("Out of Stock", "Select Reward")}</button>
+                                <button className={checkRewardUnits("disabled-btn", "reward-btn")}>{checkRewardUnits("Out of Stock", "Select Reward")}</button>
                             </div>
                         </Card>
                     )

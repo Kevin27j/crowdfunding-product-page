@@ -1,8 +1,7 @@
+import { useEffect, useState } from "react";
 import Card from "../Card"
 import { Box } from '@mui/material';
-// import { LinearProgress } from '@mui/material';
 import { styled } from '@mui/material/styles';
-// import { useTheme } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 
 // MUI PROGRESS BAR CUSTOM-STYLED
@@ -26,25 +25,36 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     },
 }));
 
+
 export default function StatsMiddleCard() {
-    // const theme = useTheme();
+    const goalAmount = 100000;
+    const [moneyRaised, setMoneyRaised] = useState(89914);
+    const [backers, setBackers] = useState(5007);
+    const [daysLeft, setDaysLeft] = useState(56);
+    
+    const progressBarVal = Math.min((moneyRaised / goalAmount) * 100, 100);
+
+    const updateBar = () => {
+        setMoneyRaised((prev) => Math.min(prev + 1000, goalAmount));        
+    }
+
     return (
         <Card>
             <div id="stats-card">
         
-                <h1 className="card-title">$89,914</h1>
+                <h1 className="card-title">${moneyRaised.toLocaleString('en-US')}</h1>
                 <p className="card-text">of $100,000 backed</p>
                 <hr className="line-break" />
 
-                <h1 className="card-title">5,007</h1>
+                <h1 className="card-title">{backers.toLocaleString('en-US')}</h1>
                 <p className="card-text">total backers</p>
                 <hr className="line-break" />
 
-                <h1 className="card-title">56</h1>
+                <h1 className="card-title">{daysLeft}</h1>
                 <p className="card-text">days left</p>
 
                 <Box className="progress-box">
-                    <BorderLinearProgress variant="determinate" value={75} />
+                    <BorderLinearProgress variant="determinate" value={progressBarVal} onClick={updateBar}/>
                 </Box>
 
             </div>

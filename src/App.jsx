@@ -8,22 +8,13 @@ const theme = createTheme({
   palette: {
     primary: {
       // Moderate cyan
-      main: 'hsl(176, 50%, 47%)', 
-      // Background
-      light: 'hsl(0, 0%, 97%)',
-      // Dark cyan
-      dark: 'hsl(176, 72%, 28%)'
-    },
-    secondary: {
-      // Black
-      main: 'hsl(0, 0%, 0%)',
-      // Dark gray
-      dark: 'hsl(0, 0%, 48%)'
+      main: 'hsl(176, 50%, 47%)'
     }
   }
 })
 
 function App() {
+
   const cardOverlap = {
     position: "relative",
     top: -55,
