@@ -1,20 +1,16 @@
 import { useState } from 'react';
-import HamIcon from '../assets/images/icon-hamburger.svg'
-import CloseIcon from '../assets/images/icon-close-menu.svg'
-import { IconButton } from '@mui/material';
-import { Modal } from '@mui/material';
-import { Box } from '@mui/material';
-import { Divider } from '@mui/material';
+import HamIcon from '../assets/images/icon-hamburger.svg';
+import CloseIcon from '../assets/images/icon-close-menu.svg';
+import Card from './Card';
+import { IconButton, Modal, Divider } from '@mui/material';
 
 const modalStyle = {
     position: 'absolute',
     top: '29%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 330,
-    bgcolor: 'background.paper',
-    border: '1px solid rgba(214, 209, 209, 0.504)',
-    borderRadius: '10px'
+    textAlign: 'left',
+    padding: 0
 };
 
 export default function Navbar() {
@@ -41,7 +37,7 @@ export default function Navbar() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={modalStyle}>
+                <Card style={modalStyle}>
                     <p className='nav-text'>
                         <a href='#' className='nav-link'>About</a>
                     </p>
@@ -53,7 +49,7 @@ export default function Navbar() {
                     <p className='nav-text'>
                         <a href='#' className='nav-link'>Get Started</a>
                     </p>
-                </Box>
+                </Card>
             </Modal>
         </div>
     )
