@@ -1,6 +1,7 @@
+import { useState } from "react";
 import Card from "./Card";
 import CloseIcon from '../assets/images/icon-close-modal.svg';
-import { IconButton, Modal, Radio, RadioGroup, FormControlLabel, FormControl } from "@mui/material";
+import { IconButton, Modal, Radio, RadioGroup, FormLabel, FormControlLabel, FormControl } from "@mui/material";
 
 export default function RewardModal(props) {
     const aboutCardStyle = {
@@ -36,19 +37,30 @@ export default function RewardModal(props) {
         }
     ]
 
+    const [input, setInput] = useState('female');
+
+    const handleInputChange = (event) => {
+        setInput(event.target.value);
+    }
+
     return (
         // <div className="reward-modal">
-            <Modal
-                open={props.openModal}
-                onClose={props.handleCloseModal}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                sx={{ maxHeight: 'auto', overflowY: 'scroll', marginTop: '80px', textAlign: 'left' }}
-            >
-                <Card style={aboutCardStyle}>
+        <Modal
+            open={props.openModal}
+            onClose={props.handleCloseModal}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            sx={{ maxHeight: 'auto', overflowY: 'scroll', marginTop: '80px', textAlign: 'left' }}
+        >
+            <Card style={aboutCardStyle}>
+
+                <FormControl>
+
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        {/* <FormLabel id="back-project-radio-group" sx={{ color: "black" }}> */}
                         <h1 className="card-title" style={{ marginLeft: '10px' }}>Back this project</h1>
-                        {/* <button src={CloseIcon} onClick={props.handleCloseModal}>Close</button> */}
+                        {/* </FormLabel> */}
+
                         <IconButton onClick={props.handleCloseModal} sx={{ cursor: "pointer" }}>
                             <img src={CloseIcon} alt="Close Modal" />
                         </IconButton>
@@ -57,38 +69,59 @@ export default function RewardModal(props) {
                     <p className="card-text">Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
                     <br />
 
-                    {rewardModalData.map((card, i) => {
-                        // function checkRewardUnits(nil, normal){
-                        //     return card.units === 0 ? normal : normal
-                        // }
+                    <RadioGroup
+                        // aria-labelledby="back-project-radio-group"
+                        // name="radio-buttons-group"
+                        value={input}
+                        onChange={handleInputChange}
+                    >
 
-                        return (
-                            <Card key={i} style={rewardCardsStyle}>
+                        {rewardModalData.map((card, i) => {
+                            // function checkRewardUnits(nil, normal){
+                            //     return card.units === 0 ? normal : normal
+                            // }
 
-                                <div className="">
-                                    <h1 className="reward-card-title">{card.title}</h1>
-                                    <h2 className="reward-card-sub">{card.subTitle}</h2>
-                                </div>
+                            return (
+                                <Card key={i} style={rewardCardsStyle}>
+                                    <div className="reward-card-title-box">
+                                        <FormControlLabel
+                                            value={card.title}
+                                            control={<Radio />}
+                                        // label={}
+                                        // sx={{ m: 0 }}
+                                        />
+                                        <div>
+                                            <h1 className="reward-card-title">{card.title}</h1>
+                                            {card.subTitle !== undefined && (
+                                                <h2 className="reward-card-sub">{card.subTitle}</h2>
+                                            )}
+                                        </div>
 
-                                <p className="card-text">{card.content}</p>
-
-                                {card.units !== undefined && (
-                                    <div className="reward-interaction-box">
-                                        <p className="card-text">
-                                            <span className="reward-unit" style={{ fontSize: "18px", marginRight: "5px" }}>
-                                                {card.units}
-                                            </span>
-                                            left
-                                        </p>
-
-                                        {/* <button className={checkRewardUnits("disabled-btn", "reward-btn")}>{checkRewardUnits("Out of Stock", "Select Reward")}</button> */}
                                     </div>
-                                )}
-                            </Card>
-                        )
-                    })}
-                </Card>
-            </Modal>
+
+                                    <p className="card-text">{card.content}</p>
+
+                                    {card.units !== undefined && (
+                                        <div className="reward-interaction-box">
+                                            <p className="card-text">
+                                                <span className="reward-unit" style={{ fontSize: "18px", marginRight: "5px" }}>
+                                                    {card.units}
+                                                </span>
+                                                left
+                                            </p>
+
+                                            {/* <button className={checkRewardUnits("disabled-btn", "reward-btn")}>{checkRewardUnits("Out of Stock", "Select Reward")}</button> */}
+                                        </div>
+                                    )}
+                                </Card>
+                            )
+                        })}
+                    </RadioGroup>
+
+                </FormControl>
+
+            </Card>
+        </Modal>
 
         // </div>
     )

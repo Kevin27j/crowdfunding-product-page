@@ -28,7 +28,7 @@ $background-hero-mobile: './assets/images/image-hero-mobile.jpg';
 
 body {
   min-width: 375px;
-  /* max-width: 768px; */
+  max-width: 768px; 
   font-family: $comissioner-font;
   background-color: $background;
 }
@@ -36,6 +36,13 @@ body {
 button {
   border: 0;
   cursor: pointer;
+}
+
+// general flex rule
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ------------------- MOBILE LAYOUT ------------------- */
@@ -54,9 +61,8 @@ button {
 }
 
 .nav-bar {
-  display: flex;
+  @extend .flex;
   justify-content: space-between;
-  align-items: center;
   padding: 25px 25px 0;
 }
 
@@ -116,8 +122,7 @@ button {
 /* ------------------- TOP CARD BUTTONS ------------------- */
 
 .top-buttons {
-  display: flex;
-  justify-content: center;
+  @extend .flex;
   margin: 20px 0;
 }
 
@@ -203,4 +208,10 @@ button {
 .reward-modal {
   // text-align: left;
   // max-height: auto;
+}
+
+.reward-card-title-box {
+  @extend .flex;
+  justify-content: normal;
+  margin: 0 10px;
 }
