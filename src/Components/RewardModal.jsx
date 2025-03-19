@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Card from "./Card";
 import CloseIcon from '../assets/images/icon-close-modal.svg';
-import { IconButton, Modal, Radio, RadioGroup, FormLabel, FormControlLabel, FormControl } from "@mui/material";
+import { IconButton, Modal, Radio, RadioGroup, FormControlLabel, FormControl } from "@mui/material"; // FormLabel
+import PropTypes from 'prop-types';
 
 export default function RewardModal(props) {
     const aboutCardStyle = {
@@ -37,10 +38,18 @@ export default function RewardModal(props) {
         }
     ]
 
-    const [input, setInput] = useState('female');
+    // Set radio button input state
+    const [input, setInput] = useState(null);
+    // Set selected radio button state
+    const [isSelected, setIsSelected] = useState(null);
 
     const handleInputChange = (event) => {
         setInput(event.target.value);
+        // console.log(event.target.value)
+    }
+
+    const handleSelectedRadioButton = (title) => {
+        setIsSelected(title);
     }
 
     return (
@@ -77,19 +86,24 @@ export default function RewardModal(props) {
                     >
 
                         {rewardModalData.map((card, i) => {
-                            // function checkRewardUnits(nil, normal){
-                            //     return card.units === 0 ? normal : normal
-                            // }
-
+                            const isOutOfStock = card.units === 0;
+                            console.log(i)
                             return (
-                                <Card key={i} style={rewardCardsStyle}>
-                                    <div className="reward-card-title-box">
+                                <Card
+                                    // If out of stock apply disabled-card class
+                                    className={`${isOutOfStock ? "disabled-card" : ""} ${isSelected ? "reward-modal-card-selected" : ""}`}
+                                    style={rewardCardsStyle}
+                                    key={i}
+                                >
+                                    <div className="reward-modal-title-box">
                                         <FormControlLabel
                                             value={card.title}
-                                            control={<Radio />}
-                                        // label={}
-                                        // sx={{ m: 0 }}
+                                            control={<Radio onChange={handleSelectedRadioButton} />}
+                                            disabled={isOutOfStock}
+                                            sx={{ m: 0 }}
+                                        // className="radio-button-select"
                                         />
+
                                         <div>
                                             <h1 className="reward-card-title">{card.title}</h1>
                                             {card.subTitle !== undefined && (
@@ -126,4 +140,10 @@ export default function RewardModal(props) {
         // </div>
     )
 
+}
+
+// Props validation
+RewardModal.propTypes = {
+    openModal: PropTypes.bool,
+    handleCloseModal: PropTypes.func,
 }

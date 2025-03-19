@@ -1,7 +1,7 @@
-export default function Card (props) {
+export default function Card(props) {
     return (
-        <div className="card" style={props.style}>
+        <div className={`card ${props.className || ''}`} style={props.style}>
             {props.children}
         </div>
-    )
+        )
 }

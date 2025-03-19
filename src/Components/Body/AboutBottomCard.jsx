@@ -41,21 +41,41 @@ export default function AboutBottomCard() {
                 <p className="card-text">Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>
                 <br />
 
+
                 {rewardCardsData.map((card, i) => {
-                    function checkRewardUnits(nil, normal){
-                        return card.units === 0 ? nil : normal
-                    }
-                    
+                    const isOutOfStock = card.units === 0;
+
                     return (
-                        <Card style={rewardCardsStyle} key={i}>
+                        <Card
+                            className={isOutOfStock ? "disabled-card" : ""}
+                            style={rewardCardsStyle}
+                            key={i}
+                        >
+
                             <h1 className="reward-card-title">{card.title}</h1>
                             <h2 className="reward-card-sub">{card.subTitle}</h2>
 
                             <p className="card-text">{card.content}</p>
 
                             <div className="reward-interaction-box">
-                                <p className="card-text"><span className="reward-unit">{card.units}</span> left</p>
-                                <button className={checkRewardUnits("disabled-btn", "reward-btn")}>{checkRewardUnits("Out of Stock", "Select Reward")}</button>
+                                <p className="card-text">
+                                    <span className="reward-unit">{card.units}</span>
+                                    left
+                                </p>
+
+                                {/* Conditional Reward butt0n */}
+                                <button className={
+                                    isOutOfStock ?
+                                        "disabled-btn" :
+                                        "reward-btn"
+                                }>
+
+                                    {isOutOfStock ?
+                                        "Out of Stock" :
+                                        "Select Reward"
+                                    }
+
+                                </button>
                             </div>
                         </Card>
                     )

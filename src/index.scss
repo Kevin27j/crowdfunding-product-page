@@ -203,6 +203,11 @@ button {
   cursor: not-allowed;
 }
 
+.disabled-card {
+  @extend .card;
+  opacity: 0.60;
+}
+
 /* ------------------- REWARD MODAL ------------------- */
 
 .reward-modal {
@@ -210,8 +215,17 @@ button {
   // max-height: auto;
 }
 
-.reward-card-title-box {
+.reward-modal-title-box {
   @extend .flex;
   justify-content: normal;
-  margin: 0 10px;
+  // margin: 0 10px;
 }
+
+.reward-modal-card-selected {
+  @extend .card;
+  border: 2px solid $moderate-cyan;
+}
+
+// .radio-button-select {
+//   margin: 0;
+// }
