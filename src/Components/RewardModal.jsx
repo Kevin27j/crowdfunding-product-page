@@ -40,8 +40,8 @@ export default function RewardModal(props) {
 
     // Set radio button input state
     const [input, setInput] = useState(null);
-    // Set selected radio button state
-    const [isSelected, setIsSelected] = useState(null);
+    // Set reward cards state style when radio is pressed
+    const [selectedCard, setSelectedCard] = useState(null);
 
     const handleInputChange = (event) => {
         setInput(event.target.value);
@@ -49,14 +49,20 @@ export default function RewardModal(props) {
     }
 
     const handleSelectedRadioButton = (title) => {
-        setIsSelected(title);
+        setSelectedCard(title.target.value);
+        // console.log(title.target.value)
     }
+
+    const handleCloseModal = () => {
+        setSelectedCard(null); // Reset selection
+        props.handleCloseModal(); // Call parent function to close modal
+    };
 
     return (
         // <div className="reward-modal">
         <Modal
             open={props.openModal}
-            onClose={props.handleCloseModal}
+            onClose={handleCloseModal}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
             sx={{ maxHeight: 'auto', overflowY: 'scroll', marginTop: '80px', textAlign: 'left' }}
@@ -70,8 +76,8 @@ export default function RewardModal(props) {
                         <h1 className="card-title" style={{ marginLeft: '10px' }}>Back this project</h1>
                         {/* </FormLabel> */}
 
-                        <IconButton onClick={props.handleCloseModal} sx={{ cursor: "pointer" }}>
-                            <img src={CloseIcon} alt="Close Modal" />
+                        <IconButton onClick={handleCloseModal} sx={{ cursor: "pointer" }}>
+                            <img src={CloseIcon} alt="Close Modal" onClick={() => setInput(null)}/>
                         </IconButton>
                     </div>
 
@@ -87,11 +93,12 @@ export default function RewardModal(props) {
 
                         {rewardModalData.map((card, i) => {
                             const isOutOfStock = card.units === 0;
-                            console.log(i)
+                            // console.log(i)
                             return (
                                 <Card
-                                    // If out of stock apply disabled-card class
-                                    className={`${isOutOfStock ? "disabled-card" : ""} ${isSelected ? "reward-modal-card-selected" : ""}`}
+                                    // If out of stock apply disabled-card class 
+                                    // If selected apply reward-modal-card-selected class
+                                    className={`${isOutOfStock ? "disabled-card" : ""} ${selectedCard === card.title ? "reward-modal-card-selected" : ""}`}
                                     style={rewardCardsStyle}
                                     key={i}
                                 >
