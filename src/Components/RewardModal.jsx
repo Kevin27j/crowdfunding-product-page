@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Card from "./Card";
 import CloseIcon from '../assets/images/icon-close-modal.svg';
-import { IconButton, Modal, Radio, RadioGroup, FormControlLabel, FormControl, Divider, Accordion, AccordionDetails } from "@mui/material"; // FormLabel
+import { IconButton, Modal, Radio, RadioGroup, FormLabel, FormControlLabel, FormControl, Divider, Accordion, AccordionDetails, InputLabel, OutlinedInput, InputAdornment } from "@mui/material";
 import PropTypes from 'prop-types';
 
 export default function RewardModal(props) {
@@ -137,8 +137,22 @@ export default function RewardModal(props) {
                                         <>
                                             <Divider />
                                             <Accordion sx={{ border: 'none', boxShadow: 'none', textAlign: 'center' }}>
-                                                <AccordionDetails>
-                                                    <p className="card-text">About this project</p>
+                                                <AccordionDetails sx={{ padding: '10px' }}> 
+                                                    <FormControl>
+                                                        <FormLabel htmlFor="pledge-amount" style={{ fontSize: '14px', fontWeight: 'bold' }}>Enter your pledge</FormLabel>
+                                                        <div className="flex" style={{ flexDirection: 'column' }}>
+                                                            <OutlinedInput 
+                                                                type="number"
+                                                                id="pledge-amount" 
+                                                                name="pledge-amount" 
+                                                                startAdornment={<InputAdornment position="start">$</InputAdornment>} 
+                                                                sx={{ width: '100%', height: '40px', padding: '20px', margin: '10px 0', borderRadius: '20px' }} 
+                                                            />
+                                                            <button 
+                                                                style={{ width: '100%', height: '40px', padding: '10px', backgroundColor: 'hsl(176, 50%, 47%)', color: 'white', borderRadius: '20px', border: 'none' }}
+                                                            >Continue</button>
+                                                        </div>
+                                                    </FormControl>
                                                 </AccordionDetails>
                                             </Accordion>
                                         </>
