@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Card from "./Card";
 import CloseIcon from '../assets/images/icon-close-modal.svg';
-import { IconButton, Modal, Radio, RadioGroup, FormControlLabel, FormControl } from "@mui/material"; // FormLabel
+import { IconButton, Modal, Radio, RadioGroup, FormControlLabel, FormControl, Divider, Accordion, AccordionDetails } from "@mui/material"; // FormLabel
 import PropTypes from 'prop-types';
 
 export default function RewardModal(props) {
@@ -77,7 +77,7 @@ export default function RewardModal(props) {
                         {/* </FormLabel> */}
 
                         <IconButton onClick={handleCloseModal} sx={{ cursor: "pointer" }}>
-                            <img src={CloseIcon} alt="Close Modal" onClick={() => setInput(null)}/>
+                            <img src={CloseIcon} alt="Close Modal" onClick={() => setInput(null)} />
                         </IconButton>
                     </div>
 
@@ -93,7 +93,6 @@ export default function RewardModal(props) {
 
                         {rewardModalData.map((card, i) => {
                             const isOutOfStock = card.units === 0;
-                            // console.log(i)
                             return (
                                 <Card
                                     // If out of stock apply disabled-card class 
@@ -108,7 +107,6 @@ export default function RewardModal(props) {
                                             control={<Radio onChange={handleSelectedRadioButton} />}
                                             disabled={isOutOfStock}
                                             sx={{ m: 0 }}
-                                        // className="radio-button-select"
                                         />
 
                                         <div>
@@ -131,8 +129,19 @@ export default function RewardModal(props) {
                                                 left
                                             </p>
 
-                                            {/* <button className={checkRewardUnits("disabled-btn", "reward-btn")}>{checkRewardUnits("Out of Stock", "Select Reward")}</button> */}
                                         </div>
+                                    )}
+
+                                    {/* When card reward is selected and there are enough units, expand option to pledge $ amount */}
+                                    {(selectedCard === card.title && card.units > 0) && (
+                                        <>
+                                            <Divider />
+                                            <Accordion sx={{ border: 'none', boxShadow: 'none', textAlign: 'center' }}>
+                                                <AccordionDetails>
+                                                    <p className="card-text">About this project</p>
+                                                </AccordionDetails>
+                                            </Accordion>
+                                        </>
                                     )}
                                 </Card>
                             )
