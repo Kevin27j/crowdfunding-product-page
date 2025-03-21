@@ -40,7 +40,9 @@ export default function MainTopCard() {
           </div>
         </div>
       </Card>
-        <RewardModal openModal={openMod} handleCloseModal={handleClose}/>
+
+      {/* Modal card, pass props for open and close functions */}
+      <RewardModal openModal={openMod} handleCloseModal={handleClose} />
     </>
 
   )
