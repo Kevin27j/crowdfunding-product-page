@@ -43,7 +43,6 @@ export default function RewardModal(props) {
     const [input, setInput] = useState(null);
     // Set reward cards state style when radio is pressed
     const [selectedCard, setSelectedCard] = useState(null);
-    const [isCompletedModalOpen, setIsCompletedModalOpen] = useState(false);
 
     const handleInputChange = (event) => {
         setInput(event.target.value);
@@ -56,13 +55,20 @@ export default function RewardModal(props) {
     }
 
     const handleCloseModal = () => {
-        props.handleCloseModal(); // Call parent function to close modal
-        setSelectedCard(null); // Reset selection
-        setInput(null); // Reset input
+        // Call parent function to close modal
+        props.handleCloseModal(); 
+        setSelectedCard(null); 
+        setInput(null); 
     };
 
-    const handleCompletedModal = () => {
-        setIsCompletedModalOpen(true);
+    // COMPLETED MODAL 
+    const [openCompletedMod, setOpenCompletedMod] = useState(false);
+    
+    const handleOpenCompleted = () => {
+        setOpenCompletedMod(true);
+    }
+    const handleCloseCompleted = () => {
+        setOpenCompletedMod(false);
     }
 
     return (
@@ -83,9 +89,7 @@ export default function RewardModal(props) {
                             {/* </FormLabel> */}
 
                             <IconButton
-                                onClick={() => {
-                                    handleCloseModal();
-                                }}
+                                onClick={handleCloseModal}
                                 sx={{ cursor: "pointer" }}
                             >
                                 <img src={CloseIcon} alt="Close Modal" />
@@ -163,6 +167,7 @@ export default function RewardModal(props) {
                                                                     style={{ width: '100%', height: '40px', padding: '10px', backgroundColor: 'hsl(176, 50%, 47%)', color: 'white', borderRadius: '20px', border: 'none' }}
                                                                     onClick={() => {
                                                                         handleCloseModal();
+                                                                        handleOpenCompleted();
                                                                     }}
                                                                 >Continue</button>
                                                             </div>
@@ -181,7 +186,7 @@ export default function RewardModal(props) {
                 </Card>
             </Modal>
 
-            <CompletedModal openModal={props.openModal} handleCloseModal={handleCloseModal} />
+            <CompletedModal openCompleted={openCompletedMod} handleCloseCompleted={handleCloseCompleted} />
         </div>
     )
 

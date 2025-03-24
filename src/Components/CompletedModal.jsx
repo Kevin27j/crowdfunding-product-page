@@ -7,8 +7,8 @@ export default function CompletedModal(props) {
 
     return(
         <Modal
-            open={props.openModal}
-            onClose={props.handleCloseModal}
+            open={props.openCompleted}
+            onClose={props.handleCloseCompleted}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
             sx={{ maxHeight: 'auto', overflowY: 'scroll', marginTop: '80px', textAlign: 'left' }}
