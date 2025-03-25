@@ -119,7 +119,16 @@ export default function RewardModal(props) {
                                         <div className="reward-modal-title-box">
                                             <FormControlLabel
                                                 value={card.title}
-                                                control={<Radio onChange={handleSelectedRadioButton} />}
+                                                // control={<Radio onChange={(card.units == null ? (handleOpenCompleted && handleCloseModal) : handleSelectedRadioButton)} />}
+                                                control={<Radio onChange={() => {
+                                                    if (card.units == null) {
+                                                        handleCloseModal();
+                                                        handleOpenCompleted();
+                                                    } else {
+                                                        // select target value of card title
+                                                        handleSelectedRadioButton({ target: { value: card.title } });
+                                                    }
+                                                }} />}
                                                 disabled={isOutOfStock}
                                                 sx={{ m: 0 }}
                                             />
