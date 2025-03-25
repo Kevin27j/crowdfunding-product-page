@@ -81,7 +81,6 @@ button {
   color: $black;
 }
 
-
 /* ------------------- MAIN BODY ------------------- */
 
 .card {
@@ -194,6 +193,7 @@ button {
   @extend .main-btn;
   height: 50px;
   max-width: 170px;
+  min-width: 130px
 }
 
 .disabled-btn {

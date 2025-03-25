@@ -164,7 +164,8 @@ export default function RewardModal(props) {
                                                                     sx={{ width: '100%', height: '40px', padding: '20px', margin: '10px 0', borderRadius: '20px' }}
                                                                 />
                                                                 <button
-                                                                    style={{ width: '100%', height: '40px', padding: '10px', backgroundColor: 'hsl(176, 50%, 47%)', color: 'white', borderRadius: '20px', border: 'none' }}
+                                                                className="main-btn"
+                                                                style={{ width: '100%', height: '40px' }}
                                                                     onClick={() => {
                                                                         handleCloseModal();
                                                                         handleOpenCompleted();
