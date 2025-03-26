@@ -39,15 +39,27 @@ export default function Navbar() {
             >
                 <Card style={modalStyle}>
                     <p className='nav-text'>
-                        <a href='#' className='nav-link'>About</a>
+                        <a 
+                            href='#main-card' 
+                            className='nav-link'
+                            onClick={handleClose}
+                        >About</a>
                     </p>
                     <Divider />
                     <p className='nav-text'>
-                        <a href='#' className='nav-link'>Discover</a>
+                        <a 
+                            href='#stats-card' 
+                            className='nav-link'
+                            onClick={handleClose}
+                        >Discover</a>
                     </p>
                     <Divider />
                     <p className='nav-text'>
-                        <a href='#' className='nav-link'>Get Started</a>
+                        <a 
+                            href='#about-card' 
+                            className='nav-link'
+                            onClick={handleClose}
+                        >Get Started</a>
                     </p>
                 </Card>
             </Modal>
