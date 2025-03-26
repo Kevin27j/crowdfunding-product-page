@@ -1,4 +1,6 @@
+import { useState } from "react";
 import Card from "../Card";
+import CompletedModal from "../CompletedModal";
 
 export default function AboutBottomCard() {
     const aboutCardStyle = {
@@ -29,6 +31,16 @@ export default function AboutBottomCard() {
             units: 0,
         }
     ]
+
+    // COMPLETED MODAL 
+    const [openCompletedMod, setOpenCompletedMod] = useState(false);
+
+    const handleOpenCompleted = () => {
+        setOpenCompletedMod(true);
+    }
+    const handleCloseCompleted = () => {
+        setOpenCompletedMod(false);
+    }
 
     return (
         <div id="about-card">
@@ -64,11 +76,15 @@ export default function AboutBottomCard() {
                                 </p>
 
                                 {/* Conditional Reward butt0n */}
-                                <button className={
-                                    isOutOfStock ?
-                                        "disabled-btn" :
-                                        "reward-btn"
-                                }>
+                                <button 
+                                    className={
+                                        isOutOfStock ?
+                                            "disabled-btn" :
+                                            "reward-btn"
+                                    }
+                                    onClick={handleOpenCompleted}
+                                    disabled={isOutOfStock}
+                                >
 
                                     {isOutOfStock ?
                                         "Out of Stock" :
@@ -81,6 +97,9 @@ export default function AboutBottomCard() {
                     )
                 })}
             </Card>
+
+            <CompletedModal openCompleted={openCompletedMod} handleCloseCompleted={handleCloseCompleted} />
+
         </div>
     )
 }
