@@ -5,39 +5,41 @@ import { IconButton, Modal, Radio, RadioGroup, FormLabel, FormControlLabel, Form
 import PropTypes from 'prop-types';
 import CompletedModal from "./CompletedModal";
 
-export default function RewardModal(props) {
-    const aboutCardStyle = {
-        textAlign: 'left'
-    }
-    const rewardCardsStyle = {
-        ...aboutCardStyle,
-        width: '280px',
-    }
+const aboutCardStyle = {
+    textAlign: 'left'
+}
+const rewardCardsStyle = {
+    ...aboutCardStyle,
+    width: '280px',
+}
 
-    const rewardModalData = [
-        {
-            title: "Pledge with no reward",
-            content: "Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.",
-        },
-        {
-            title: "Bamboo Stand",
-            subTitle: "Pledge $25 or more",
-            content: "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.",
-            units: 101,
-        },
-        {
-            title: "Black Edition Stand",
-            subTitle: "Pledge $75 or more",
-            content: "You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included.",
-            units: 64,
-        },
-        {
-            title: "Mahogany Special Edition",
-            subTitle: "Pledge $200 or more",
-            content: "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.",
-            units: 0,
-        }
-    ]
+const rewardModalData = [
+    {
+        title: "Pledge with no reward",
+        content: "Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.",
+    },
+    {
+        title: "Bamboo Stand",
+        subTitle: "Pledge $25 or more",
+        content: "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.",
+        units: 101,
+    },
+    {
+        title: "Black Edition Stand",
+        subTitle: "Pledge $75 or more",
+        content: "You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included.",
+        units: 64,
+    },
+    {
+        title: "Mahogany Special Edition",
+        subTitle: "Pledge $200 or more",
+        content: "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.",
+        units: 0,
+    }
+]
+
+
+export default function RewardModal(props) {
 
     // Set radio button input state
     const [input, setInput] = useState(null);
@@ -56,14 +58,14 @@ export default function RewardModal(props) {
 
     const handleCloseModal = () => {
         // Call parent function to close modal
-        props.handleCloseModal(); 
-        setSelectedCard(null); 
-        setInput(null); 
+        props.handleCloseModal();
+        setSelectedCard(null);
+        setInput(null);
     };
 
     // COMPLETED MODAL 
     const [openCompletedMod, setOpenCompletedMod] = useState(false);
-    
+
     const handleOpenCompleted = () => {
         setOpenCompletedMod(true);
     }
@@ -173,8 +175,8 @@ export default function RewardModal(props) {
                                                                     sx={{ width: '100%', height: '40px', padding: '20px', margin: '10px 0', borderRadius: '20px' }}
                                                                 />
                                                                 <button
-                                                                className="main-btn"
-                                                                style={{ width: '100%', height: '40px' }}
+                                                                    className="main-btn"
+                                                                    style={{ width: '100%', height: '40px' }}
                                                                     onClick={() => {
                                                                         handleCloseModal();
                                                                         handleOpenCompleted();
@@ -196,7 +198,11 @@ export default function RewardModal(props) {
                 </Card>
             </Modal>
 
-            <CompletedModal openCompleted={openCompletedMod} handleCloseCompleted={handleCloseCompleted} />
+            <CompletedModal
+                openCompleted={openCompletedMod}
+                handleCloseCompleted={handleCloseCompleted}
+            />
+            
         </div>
     )
 
