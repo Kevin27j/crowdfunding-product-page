@@ -35,7 +35,10 @@ export default function MainTopCard() {
 
             <div className="top-buttons">
               <button className="main-btn" onClick={handleOpen}>Back this project</button>
-              <button className="bookmark-btn"><img src={bookmarkIcon} /></button>
+              <div className="bookmark-container">
+                <button className="bookmark-btn"><img src={bookmarkIcon} /></button>
+                <p className="bookmark-text">Bookmark</p>
+              </div>
             </div>
           </div>
         </div>

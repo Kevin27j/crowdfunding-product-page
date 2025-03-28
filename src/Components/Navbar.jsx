@@ -37,7 +37,7 @@ export default function Navbar() {
                     <img src={openMod ? CloseIcon : HamIcon} />
                 </IconButton> : 
                 // desktop menu list
-                <div className='flex'>
+                <div className='nav-links-container'>
                     <p className='nav-text'>
                         <a
                             href='#main-card'

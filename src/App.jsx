@@ -23,7 +23,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Header />
-      <div style={cardOverlap}>
+      <div className='body-wrap' style={cardOverlap}>
         <MainTopCard />
         <StatsMiddleCard />
         <AboutBottomCard />
