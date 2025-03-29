@@ -115,7 +115,11 @@ button {
 }
 
 
-/* ------------------- TOP CARD BUTTONS ------------------- */
+/* ------------------- TOP CARD & BUTTONS ------------------- */
+
+.main-card-box {
+  margin-top: -60px;
+}
 
 .top-buttons {
   @include flex(row, center, center);
@@ -274,15 +278,7 @@ button {
     font-size: $font-16 * 1;
   }
 
-  /* ------------------- TOP CARD BUTTONS ------------------- */
-
-  .main-btn {
-    border-radius: 50px;
-    background-color: $moderate-cyan;
-    color: $background;
-    font-size: $font-16 * 0.9;
-    font-weight: bold;
-  }
+/* ------------------- TOP CARD & BUTTONS ------------------- */
 
   .top-buttons {
     @include flex(row, space-between, center);
@@ -290,25 +286,21 @@ button {
   }
 
   .top-buttons button {
-    margin: 0 5px;
-    height: 55px;
-  }
-
-  .top-buttons .main-btn {
-    padding: 0 43px;
+    margin: 0px;
   }
 
   .bookmark-container {
     @include flex(row, center, center);
     margin: 0 10px;
-  }
-
-  .bookmark-btn {
-    border-radius: 50%;
+    background-color: $card-border-grey;
+    border-radius: 50px;
   }
 
   .bookmark-text {
     display: block;
+    padding: 0px 20px;
+    color: $dark-gray;
+    font-weight: bold;
   }
 
 }

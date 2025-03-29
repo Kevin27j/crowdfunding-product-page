@@ -24,7 +24,7 @@ export default function MainTopCard() {
       <Card>
         <div id="main-card">
           <img src={mastercraftLogo} style={imgStyle} />
-          <div style={{ marginTop: '-60px' }}>
+          <div className="main-card-box" >
             <h1 className="card-title">
               Mastercraft Bamboo Monitor Riser
             </h1>
