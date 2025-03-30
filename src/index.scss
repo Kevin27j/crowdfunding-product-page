@@ -146,7 +146,7 @@ button {
 
 /* ------------------- MIDDLE STATS CARD ------------------- */
 
-#stats-card>.card-title {
+.stats-card-text>.card-title {
   font-size: $font-16 * 2;
 }
 
@@ -216,7 +216,7 @@ button {
 /* ------------------- REWARD MODAL ------------------- */
 
 .reward-modal-title-box {
-  @include flex(row, normal, center);  
+  @include flex(row, normal, center);
 }
 
 .reward-modal-card-selected {
@@ -249,7 +249,7 @@ button {
     @include flex(row, space-between, center);
     margin: 0 10px;
   }
-  
+
   .nav-link {
     font-size: $font-16 * 1;
     color: white;
@@ -278,11 +278,11 @@ button {
     font-size: $font-16 * 1;
   }
 
-/* ------------------- TOP CARD & BUTTONS ------------------- */
+  /* ------------------- TOP CARD & BUTTONS ------------------- */
 
   .top-buttons {
     @include flex(row, space-between, center);
-    margin: 30px 10px ;
+    margin: 30px 10px;
   }
 
   .top-buttons button {
@@ -302,5 +302,23 @@ button {
     color: $dark-gray;
     font-weight: bold;
   }
+
+  /* ------------------- MIDDLE STATS CARD ------------------- */
+
+  .stats-card-container {
+    @include flex(row, center, center);
+  }
+
+  .card
+
+  .line-break {
+    transform: rotate(90deg);
+  }
+
+  .progress-box {
+    margin: 20px 0;
+  }
+
+
 
 }
