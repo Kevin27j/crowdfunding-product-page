@@ -43,63 +43,73 @@ export default function AboutBottomCard() {
     }
 
     return (
-        <div id="about-card">
+        <>
             <Card style={aboutCardStyle}>
+                <div id="about-card">
 
-                <h1 className="card-title">About this project</h1>
+                    <div className="about-card-container">
 
-                <p className="card-text">The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.</p>
+                        <div className="about-card-title-container">
+                            <h1 className="card-title">About this project</h1>
 
-                <p className="card-text">Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>
-                <br />
+                            <p className="card-text">The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.</p>
+
+                            <p className="card-text">Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>
+
+                        </div>
+                        <br />
 
 
-                {rewardCardsData.map((card, i) => {
-                    const isOutOfStock = card.units === 0;
+                        {rewardCardsData.map((card, i) => {
+                            const isOutOfStock = card.units === 0;
 
-                    return (
-                        <Card
-                            className={isOutOfStock ? "disabled-card" : ""}
-                            style={rewardCardsStyle}
-                            key={i}
-                        >
-
-                            <h1 className="reward-card-title">{card.title}</h1>
-                            <h2 className="reward-card-sub">{card.subTitle}</h2>
-
-                            <p className="card-text">{card.content}</p>
-
-                            <div className="reward-interaction-box">
-                                <p className="card-text">
-                                    <span className="reward-unit">{card.units}</span>
-                                    left
-                                </p>
-
-                                {/* Conditional Reward butt0n */}
-                                <button 
-                                    className={
-                                        isOutOfStock ?
-                                            "disabled-btn" :
-                                            "reward-btn"
-                                    }
-                                    onClick={handleOpenCompleted}
-                                    disabled={isOutOfStock}
+                            return (
+                                <Card
+                                    className={`${isOutOfStock ? "disabled-card" : ""}`}
+                                    style={rewardCardsStyle}
+                                    key={i}
                                 >
 
-                                    {isOutOfStock ?
-                                        "Out of Stock" :
-                                        "Select Reward"
-                                    }
+                                    <div className="reward-card-title-container">
+                                        <h1 className="reward-card-title">{card.title}</h1>
+                                        <h2 className="reward-card-sub">{card.subTitle}</h2>
 
-                                </button>
-                            </div>
-                        </Card>
-                    )
-                })}
+                                    </div>
+
+                                    <p className="card-text">{card.content}</p>
+
+                                    <div className="reward-interaction-box">
+                                        <p className="card-text">
+                                            <span className="reward-unit">{card.units}</span>
+                                            left
+                                        </p>
+
+                                        {/* Conditional Reward butt0n */}
+                                        <button
+                                            className={
+                                                isOutOfStock ?
+                                                    "disabled-btn" :
+                                                    "reward-btn"
+                                            }
+                                            onClick={handleOpenCompleted}
+                                            disabled={isOutOfStock}
+                                        >
+
+                                            {isOutOfStock ?
+                                                "Out of Stock" :
+                                                "Select Reward"
+                                            }
+
+                                        </button>
+                                    </div>
+                                </Card>
+                            )
+                        })}
+                    </div>
+                </div>
             </Card>
 
             <CompletedModal openCompleted={openCompletedMod} handleCloseCompleted={handleCloseCompleted} />
-
-        </div>
+        </>
     )
 }

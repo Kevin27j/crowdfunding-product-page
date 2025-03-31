@@ -24,7 +24,7 @@ export default function MainTopCard() {
       <Card>
         <div id="main-card">
           <img src={mastercraftLogo} style={imgStyle} />
-          <div className="main-card-box" >
+          <div className="main-card-container" >
             <h1 className="card-title">
               Mastercraft Bamboo Monitor Riser
             </h1>

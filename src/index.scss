@@ -117,7 +117,7 @@ button {
 
 /* ------------------- TOP CARD & BUTTONS ------------------- */
 
-.main-card-box {
+.main-card-container {
   margin-top: -60px;
 }
 
@@ -164,11 +164,11 @@ button {
 
 /* ------------------- BOTTOM ABOUT CARD ------------------- */
 
-#about-card {
+.about-card-title-container {
   text-align: left;
 }
 
-#about-card .card-title {
+.about-card-title-container>.card-title {
   margin: 10px 10px;
 }
 
@@ -192,6 +192,7 @@ button {
   font-size: $font-16 * 2;
   color: $black;
   font-weight: bold;
+  margin-right: 10px;
 }
 
 .reward-btn {
@@ -274,8 +275,9 @@ button {
   }
 
   .card-text {
-    margin: 10px 20px;
+    margin: 10px 0;
     font-size: $font-16 * 1;
+    line-height: 1.5rem
   }
 
   /* ------------------- TOP CARD & BUTTONS ------------------- */
@@ -309,9 +311,7 @@ button {
     @include flex(row, center, center);
   }
 
-  .card
-
-  .line-break {
+  .card .line-break {
     transform: rotate(90deg);
   }
 
@@ -319,6 +319,43 @@ button {
     margin: 20px 0;
   }
 
+  /* ------------------- BOTTOM ABOUT CARD ------------------- */
+
+  // .about-card-title-container {
+  //   text-align: left;
+  // }
+
+  .about-card-container>.card {
+    min-width: 648px;
+  }
+
+  .about-card-title-container>.card-title {
+    font-size: $font-16 * 1.2;
+  }
+
+  .about-card-title-container>.card-title,
+  .about-card-title-container>.card-text {
+    margin: 30px 10px;
+  }
+
+  .reward-card-title-container {
+    @include flex(row, space-between, center);
+  }
+
+  .reward-card-title,
+  .reward-card-sub {
+    margin: 10px 0px;
+    font-size: $font-16 * 1.1;
+  }
+
+  .reward-interaction-box {
+    @include flex(row, space-between, center);
+    margin-top: 25px;
+  }
+
+  .reward-btn {
+    min-width: 170px
+  }
 
 
 }
