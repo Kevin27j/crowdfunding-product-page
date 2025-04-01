@@ -216,7 +216,15 @@ button {
 
 /* ------------------- REWARD MODAL ------------------- */
 
-.reward-modal-title-box {
+.reward-modal-title-container {
+  @include flex(row, space-between, center);
+}
+
+.reward-modal-title-container> .card-title {
+  margin-left: 10px;
+}
+
+.reward-card-selection-container {
   @include flex(row, normal, center);
 }
 
@@ -224,6 +232,12 @@ button {
   @extend .card;
   border: 2px solid $moderate-cyan;
 }
+
+.selected-reward-input {
+  width: 100%;
+  height: 40px;
+}
+
 
 
 /* ------------------- DESKTOP LAYOUT ------------------- */
@@ -355,6 +369,44 @@ button {
 
   .reward-btn {
     min-width: 170px
+  }
+
+  /* ------------------- REWARD MODAL ------------------- */
+
+  .reward-modal-title-container> .card-title {
+    font-size: $font-16 * 1.3;
+    margin-left: 0;
+  }
+
+  .reward-modal-cards-container>.card {
+    min-width: 648px;
+    padding: 20px;
+  }
+
+  .reward-modal-cards-container>.card>.card-text {
+    padding-left: 40px;
+  }
+
+  .reward-card-title-container {
+    gap: 20px;
+  }
+
+  .reward-interaction-box {
+    margin-left: 40px;
+  }
+
+  .selected-reward-card-accordion {
+    min-width: 580px;
+    @include flex(row, space-between, center);
+  }
+
+  .selected-reward-input-box {
+    @include flex(row, space-between, center);
+    gap: 20px;
+  }
+
+  .selected-reward-input {
+    width: 100px;
   }
 
 

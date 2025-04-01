@@ -85,9 +85,9 @@ export default function RewardModal(props) {
                 <Card style={aboutCardStyle}>
                     <FormControl>
 
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <div className="reward-modal-title-container">
                             {/* <FormLabel id="back-project-radio-group" sx={{ color: "black" }}> */}
-                            <h1 className="card-title" style={{ marginLeft: '10px' }}>Back this project</h1>
+                            <h1 className="card-title">Back this project</h1>
                             {/* </FormLabel> */}
 
                             <IconButton
@@ -107,90 +107,96 @@ export default function RewardModal(props) {
                             value={input}
                             onChange={handleInputChange}
                         >
+                            <div className="reward-modal-cards-container">
+                                {rewardModalData.map((card, i) => {
+                                    const isOutOfStock = card.units === 0;
+                                    return (
 
-                            {rewardModalData.map((card, i) => {
-                                const isOutOfStock = card.units === 0;
-                                return (
-                                    <Card
-                                        // If out of stock apply disabled-card class 
-                                        // If selected apply reward-modal-card-selected class
-                                        className={`${isOutOfStock ? "disabled-card" : ""} ${selectedCard === card.title ? "reward-modal-card-selected" : ""}`}
-                                        style={rewardCardsStyle}
-                                        key={i}
-                                    >
-                                        <div className="reward-modal-title-box">
-                                            <FormControlLabel
-                                                value={card.title}
-                                                // control={<Radio onChange={(card.units == null ? (handleOpenCompleted && handleCloseModal) : handleSelectedRadioButton)} />}
-                                                control={<Radio onChange={() => {
-                                                    if (card.units == null) {
-                                                        handleCloseModal();
-                                                        handleOpenCompleted();
-                                                    } else {
-                                                        // select target value of card title
-                                                        handleSelectedRadioButton({ target: { value: card.title } });
-                                                    }
-                                                }} />}
-                                                disabled={isOutOfStock}
-                                                sx={{ m: 0 }}
-                                            />
+                                        <Card
+                                            // If out of stock apply disabled-card class 
+                                            // If selected apply reward-modal-card-selected class
+                                            className={`${isOutOfStock ? "disabled-card" : ""} ${selectedCard === card.title ? "reward-modal-card-selected" : ""}`}
+                                            style={rewardCardsStyle}
+                                            key={i}
+                                        >
+                                            <div className="reward-card-selection-container">
+                                                <FormControlLabel
+                                                    value={card.title}
+                                                    // control={<Radio onChange={(card.units == null ? (handleOpenCompleted && handleCloseModal) : handleSelectedRadioButton)} />}
+                                                    control={<Radio onChange={() => {
+                                                        if (card.units == null) {
+                                                            handleCloseModal();
+                                                            handleOpenCompleted();
+                                                        } else {
+                                                            // select target value of card title
+                                                            handleSelectedRadioButton({ target: { value: card.title } });
+                                                        }
+                                                    }} />}
+                                                    disabled={isOutOfStock}
+                                                    sx={{ m: 0 }}
+                                                />
 
-                                            <div>
-                                                <h1 className="reward-card-title">{card.title}</h1>
-                                                {card.subTitle !== undefined && (
-                                                    <h2 className="reward-card-sub">{card.subTitle}</h2>
-                                                )}
-                                            </div>
-
-                                        </div>
-
-                                        <p className="card-text">{card.content}</p>
-
-                                        {card.units !== undefined && (
-                                            <div className="reward-interaction-box">
-                                                <p className="card-text">
-                                                    <span className="reward-unit" style={{ fontSize: "18px", marginRight: "5px" }}>
-                                                        {card.units}
-                                                    </span>
-                                                    left
-                                                </p>
+                                                <div className="reward-card-title-container">
+                                                    <h1 className="reward-card-title">{card.title}</h1>
+                                                    {card.subTitle !== undefined && (
+                                                        <h2 className="reward-card-sub">{card.subTitle}</h2>
+                                                    )}
+                                                </div>
 
                                             </div>
-                                        )}
 
-                                        {/* When card reward is selected and there are enough units, expand option to pledge $ amount */}
-                                        {(selectedCard === card.title && card.units > 0) && (
-                                            <>
-                                                <Divider />
-                                                <Accordion sx={{ border: 'none', boxShadow: 'none', textAlign: 'center' }}>
-                                                    <AccordionDetails sx={{ padding: '10px' }}>
-                                                        <FormControl>
-                                                            <FormLabel htmlFor="pledge-amount" style={{ fontSize: '14px', fontWeight: 'bold' }}>Enter your pledge</FormLabel>
-                                                            <div className="flex" style={{ flexDirection: 'column' }}>
-                                                                <OutlinedInput
-                                                                    type="number"
-                                                                    id="pledge-amount"
-                                                                    name="pledge-amount"
-                                                                    startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                                                                    sx={{ width: '100%', height: '40px', padding: '20px', margin: '10px 0', borderRadius: '20px' }}
-                                                                />
-                                                                <button
-                                                                    className="main-btn"
-                                                                    style={{ width: '100%', height: '40px' }}
-                                                                    onClick={() => {
-                                                                        handleCloseModal();
-                                                                        handleOpenCompleted();
-                                                                    }}
-                                                                >Continue</button>
-                                                            </div>
-                                                        </FormControl>
-                                                    </AccordionDetails>
-                                                </Accordion>
-                                            </>
-                                        )}
-                                    </Card>
-                                )
-                            })}
+                                            <p className="card-text">{card.content}</p>
+
+                                            {card.units !== undefined && (
+                                                <div className="reward-interaction-box">
+                                                    <p className="card-text">
+                                                        <span className="reward-unit" style={{ fontSize: "18px", marginRight: "5px" }}>
+                                                            {card.units}
+                                                        </span>
+                                                        left
+                                                    </p>
+
+                                                </div>
+                                            )}
+
+                                            {/* When card reward is selected and there are enough units, expand option to pledge $ amount */}
+                                            {(selectedCard === card.title && card.units > 0) && (
+                                                <>
+                                                    <Divider />
+                                                    <Accordion sx={{ border: 'none', boxShadow: 'none', textAlign: 'center' }}>
+                                                        <AccordionDetails sx={{ padding: '10px' }}>
+                                                            <FormControl>
+                                                                <div className="selected-reward-card-accordion">
+                                                                    <FormLabel htmlFor="pledge-amount" style={{ fontSize: '14px', fontWeight: 'bold' }}>Enter your pledge</FormLabel>
+                                                                    <div className="selected-reward-input-box">
+                                                                        <OutlinedInput
+                                                                            className="selected-reward-input"
+                                                                            sx={{  padding: '20px', margin: '10px 0', borderRadius: '20px' }}
+                                                                            type="number"
+                                                                            id="pledge-amount"
+                                                                            name="pledge-amount"
+                                                                            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                                                        />
+                                                                        <button
+                                                                            className="main-btn selected-reward-input"
+                                                                            // style={{ width: '100%', height: '40px' }}
+                                                                            onClick={() => {
+                                                                                handleCloseModal();
+                                                                                handleOpenCompleted();
+                                                                            }}
+                                                                        >Continue</button>
+                                                                    </div>
+                                                                </div>
+                                                            </FormControl>
+                                                        </AccordionDetails>
+                                                    </Accordion>
+                                                </>
+                                            )}
+                                        </Card>
+
+                                    )
+                                })}
+                            </div>
                         </RadioGroup>
 
                     </FormControl>
@@ -202,7 +208,7 @@ export default function RewardModal(props) {
                 openCompleted={openCompletedMod}
                 handleCloseCompleted={handleCloseCompleted}
             />
-            
+
         </div>
     )
 
