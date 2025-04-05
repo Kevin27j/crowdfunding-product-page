@@ -19,6 +19,13 @@ export default function MainTopCard() {
     setOpenMod(false);
   }
 
+  // toggle bookmarked button styles when clicked
+  const [bookmarked, setBookmarked] = useState(false);
+  const handleBookmarked = () => {
+    setBookmarked(prev => !prev);
+  }
+  console.log(bookmarked);
+
   return (
     <>
       <Card>
@@ -34,11 +41,22 @@ export default function MainTopCard() {
             </p>
 
             <div className="top-buttons">
+
               <button className="main-btn" onClick={handleOpen}>Back this project</button>
-              <div className="bookmark-container">
+
+              <button
+                // when clicked change color *Not working for bookmark-btn*
+                className={
+                  `bookmark-container ${bookmarked ? "bookmarked-container-clicked" : ""}`
+                }
+                value={bookmarked}
+                onClick={handleBookmarked}
+              >
                 <button className="bookmark-btn"><img src={bookmarkIcon} /></button>
-                <p className="bookmark-text">Bookmark</p>
-              </div>
+                <p className="bookmark-text">
+                  {bookmarked ? "Bookmarked" : "Bookmark"}
+                  </p>
+              </button>
             </div>
           </div>
         </div>

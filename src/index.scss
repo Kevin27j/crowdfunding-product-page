@@ -114,6 +114,9 @@ button {
   font-weight: bold;
 }
 
+.main-btn:hover {
+  background-color: $dark-cyan;
+}
 
 /* ------------------- TOP CARD & BUTTONS ------------------- */
 
@@ -133,6 +136,18 @@ button {
 
 .top-buttons .main-btn {
   padding: 0 43px;
+}
+
+.bookmark-container {
+  border-radius: 50%;
+  // attempted to align the parent (.bookmark-container) with the child element (.bookmark-btn) but its not working as expected
+  width: 56px;
+}
+
+.bookmark-container:hover {
+  .bookmark-btn {
+    opacity: 70%;
+  }
 }
 
 .bookmark-btn {
@@ -207,6 +222,7 @@ button {
   opacity: 0.5;
   background-color: $dark-gray;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 .disabled-card {
@@ -315,9 +331,17 @@ button {
 
   .bookmark-container {
     @include flex(row, center, center);
-    margin: 0 10px;
+    margin: 10px 10px;
     background-color: $card-border-grey;
     border-radius: 50px;
+    width: auto;
+  }
+
+  // when bookmark container is clicked change color for bookmark button and text. 
+  // *bookmark button not working*
+  .bookmarked-container-clicked > .bookmark-btn,
+  .bookmarked-container-clicked > .bookmark-text {
+    color: $dark-cyan; 
   }
 
   .bookmark-text {
@@ -393,6 +417,13 @@ button {
 
   .reward-modal-cards-container>.card>.card-text {
     padding-left: 40px;
+  }
+
+  // Fix: this shouldn't be working for disabled cards
+  .reward-card-selection-container:hover {
+    .reward-card-title {
+      color: $dark-cyan;
+    }
   }
 
   .reward-card-title-container {

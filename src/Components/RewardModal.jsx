@@ -122,7 +122,6 @@ export default function RewardModal(props) {
                                             <div className="reward-card-selection-container">
                                                 <FormControlLabel
                                                     value={card.title}
-                                                    // control={<Radio onChange={(card.units == null ? (handleOpenCompleted && handleCloseModal) : handleSelectedRadioButton)} />}
                                                     control={<Radio onChange={() => {
                                                         if (card.units == null) {
                                                             handleCloseModal();
